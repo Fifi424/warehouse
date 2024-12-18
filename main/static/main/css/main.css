@@ -1,0 +1,327 @@
+/* =========================
+   Основные стили страницы
+   ========================= */
+   body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f9; 
+    color: #333; 
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* =========================
+   Верхняя панель навигации
+   ========================= */
+bside {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background: #2b2d42;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+bside .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* =========================
+   Боковая панель
+   ========================= */
+aside {
+    position: fixed;
+    top: 60px;
+    width: 80px;
+    height: calc(100vh - 60px);
+    background: #3f4e63;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    border-right: 1px solid #d6d6d6;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+aside ul li {
+    margin: 20px;
+}
+
+aside ul li a {
+    display: inline-block;
+    width: 100%;
+}
+
+aside ul li .menu-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.33);
+    transition: transform 0.3s ease;
+}
+
+aside ul li:hover .menu-icon {
+    background: #3f4e63;
+    transform: scale(1.2);
+    box-shadow: 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   Основной контент
+   ========================= */
+main {
+    margin: 60px 0 0 80px;
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    background: #ffffff;
+}
+
+main h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2b2d42;
+}
+
+/* =========================
+   Стилизация таблицы
+   ========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table th {
+    background: #2b2d42;
+    color: #ffffff;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+table td {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+table tr:hover {
+    background: #edf2f4;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.table-actions .btn {
+    padding: 8px 15px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    background: #2b2d42;
+    transition: background 0.3s ease-in-out;
+}
+/* =========================
+   Стили кнопок
+   ========================= */
+button.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: 1px solid #28a745;
+}
+
+button.btn-success:hover {
+    background-color: #218838;
+}
+
+button.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: 1px solid #dc3545;
+}
+
+button.btn-danger:hover {
+    background-color: #c82333;
+}
+
+button.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+}
+
+button.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* =========================
+   Фильтр формы
+   ========================= */
+.filter-form {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    background: #edf2f4;
+    padding: 15px;
+    border: 1px solid #d6d6d6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-form .form-group {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+}
+
+.filter-form label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.filter-form .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: #ffffff;
+}
+
+.form-control {
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #227deb;
+    background-color: #fff;
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.form-row .form-group {
+    flex: 1 1 20%;
+    min-width: 150px;
+}
+
+.form-row .form-group.full-width {
+    flex: 1 1 100%;
+}
+
+.form-row .form-group.fixed {
+    flex: 0 0 100px;
+}
+
+.form-row .form-group.half-width {
+    flex: 1 1 48%;
+}
+
+.filter-form .btn {
+    padding: 10px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background: #2b2d42;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.filter-form .btn:hover {
+    background: #23efcd;
+}
+/* =========================
+   Стили для пагинации
+   ========================= */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #2b2d42;
+    font-weight: bold;
+}
+
+.pagination .current {
+    font-weight: bold;
+    color: #2b2d42;
+}
+
+.regds {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+

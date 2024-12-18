@@ -1,0 +1,10 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Успешно{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Заказ успешно принят!</h1>
+    <a href="{% url 'index' %}" class="btn btn-primary">Вернуться</a>
+</div>
+{% endblock %}

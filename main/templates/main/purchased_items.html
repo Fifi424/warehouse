@@ -1,0 +1,31 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Купленные товары{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Купленные товары</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Название товара</th>
+                <th>Вес</th>
+                <th>Стоимость</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in purchased_items %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.item_weight }}</td>
+                <td>{{ item.item_cost }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Нет товаров в заказе.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

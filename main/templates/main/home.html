@@ -1,0 +1,12 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Добро пожаловать</h1>
+    <p>Здесь могла быть ваша реклама!</p>
+    
+    <p>{{ user.username }} сейчас в системе. Сменить пользователя? <a href="{% url 'logout' %}">Выйти</a></p>
+</div>
+{% endblock %}

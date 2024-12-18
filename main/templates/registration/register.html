@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="regds">
+    <h1>Регистрация</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_username" class="form-label">Логин</label>
+            <input type="text" id="id_username" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="id_password1" class="form-label">Пароль</label>
+            <input type="password" id="id_password1" name="password1" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="id_password2" class="form-label">Подтверждение пароля</label>
+            <input type="password" id="id_password2" name="password2" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </form>
+
+    <p>У вас есть аккаунта, <a href="{% url 'login' %}">войти</a>.</p>
+</div>
+{% endblock %}

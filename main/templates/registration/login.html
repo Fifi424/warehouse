@@ -1,0 +1,29 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<div class="regds">
+    <h1>Вход</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_username" class="form-label">Логин</label>
+            <input type="text" id="id_username" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="id_password" class="form-label">Пароль</label>
+            <input type="password" id="id_password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+
+    {% if form.errors %}
+        <div class="alert alert-danger mt-3">
+            <p>Проверте, неправильный логин или пароль</p>
+        </div>
+    {% endif %}
+    
+    <p>Если у вас нет аккаунта, <a href="{% url 'register' %}">зарегистрируйтесь</a>.</p>
+</div>
+{% endblock %}

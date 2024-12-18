@@ -1,0 +1,95 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Добавление заказа{% endblock %}
+
+{% block content %}
+<main class="container">
+    <h1>Добавление заказа</h1>
+    <form method="post" action="{% url 'add_receipt' %}" class="horizontal-form">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group">
+                <label for="pvz">Выберите ПВЗ:</label>
+                <select name="pvz" id="pvz" class="form-control" required>
+                    {% for pvz in pvz_list %}
+                        <option value="{{ pvz.id }}">{{ pvz.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <fieldset>
+            <legend>Информация о заказе</legend>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="order_number">Номер заказа:</label>
+                    <input type="text" name="order_number" id="order_number" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="sender_name">Отправитель:</label>
+                    <input type="text" name="sender_name" id="sender_name" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="sender_contact">Контакт отправителя:</label>
+                    <input type="text" name="sender_contact" id="sender_contact" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="creation_date">Дата создания:</label>
+                    <input type="date" name="creation_date" id="creation_date" class="form-control" required>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Товары в заказе</legend>
+            <div id="items-container">
+                <div class="item form-row">
+                    <div class="form-group">
+                        <label for="item_name_0">Название:</label>
+                        <input type="text" name="items[0][name]" id="item_name_0" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_weight_0">Вес:</label>
+                        <input type="number" step="0.01" name="items[0][weight]" id="item_weight_0" class="form-control item-weight" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_cost_0">Стоимость:</label>
+                        <input type="number" step="0.01" name="items[0][cost]" id="item_cost_0" class="form-control item-cost" required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="add-item" class="btn btn-secondary">Добавить товар</button>
+        </fieldset>
+        <div class="form-row">
+            <button type="submit" class="btn btn-primary">Сохранить заказ</button>
+        </div>
+    </form>
+</main>
+
+<script>
+    const itemsContainer = document.getElementById('items-container');
+    const addItemButton = document.getElementById('add-item');
+    let itemCount = 1;
+
+    addItemButton.addEventListener('click', () => {
+        const item = document.createElement('div');
+        item.classList.add('item', 'form-row');
+        item.innerHTML = `
+            <div class="form-group">
+                <label for="item_name_${itemCount}">Название:</label>
+                <input type="text" name="items[${itemCount}][name]" id="item_name_${itemCount}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="item_weight_${itemCount}">Вес:</label>
+                <input type="number" step="0.01" name="items[${itemCount}][weight]" id="item_weight_${itemCount}" class="form-control item-weight" required>
+            </div>
+            <div class="form-group">
+                <label for="item_cost_${itemCount}">Стоимость:</label>
+                <input type="number" step="0.01" name="items[${itemCount}][cost]" id="item_cost_${itemCount}" class="form-control item-cost" required>
+            </div>
+        `;
+        itemsContainer.appendChild(item);
+        itemCount++;
+    });
+</script>
+{% endblock %}

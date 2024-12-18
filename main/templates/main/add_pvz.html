@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Добавить ПВЗ{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Добавить ПВЗ</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_name" class="form-label">Название ПВЗ</label>
+            <input type="text" class="form-control" id="id_name" name="name" value="{{ form.name.value|default:'' }}">
+        </div>
+        <div class="mb-3">
+            <label for="id_phone_number" class="form-label">Телефон</label>
+            <input type="text" class="form-control" id="id_phone_number" name="phone_number" value="{{ form.phone_number.value|default:'' }}">
+        </div>
+        <div class="mb-3">
+            <label for="id_rent_paid_until" class="form-label">Аренда оплачена до</label>
+            <input type="date" class="form-control" id="id_rent_paid_until" name="rent_paid_until" value="{{ form.rent_paid_until.value|default:'' }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+{% endblock %}

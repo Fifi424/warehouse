@@ -1,0 +1,33 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Список заказов{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Список заказов</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Номер заказа</th>
+                <th>ПВЗ</th>
+                <th>Отправитель</th>
+                <th>Дата создания</th>
+                <th>Общий вес</th>
+                <th>Общая стоимость</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.order_number }}</td>
+                <td>{{ order.pvz.name }}</td>
+                <td>{{ order.sender_name }}</td>
+                <td>{{ order.creation_date }}</td>
+                <td>{{ order.total_weight }}</td>
+                <td>{{ order.total_cost }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

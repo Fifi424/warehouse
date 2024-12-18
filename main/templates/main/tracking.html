@@ -1,0 +1,67 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Выданные заказы{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Выданные заказы</h1>
+    <form method="get" action="{% url 'export_orders' %}" class="mb-3">
+        <div class="row">
+            <div class="col-md-5">
+                <label for="start_date">Дата начала</label>
+                <input type="date" id="start_date" name="start_date" class="form-control">
+            </div>
+            <div class="col-md-5">
+                <label for="end_date">Дата окончания</label>
+                <input type="date" id="end_date" name="end_date" class="form-control">
+            </div>
+            <div class="col-md-2 align-self-end">
+                <button type="submit" class="btn btn-primary">Выгрузить</button>
+            </div>
+        </div>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Номер заказа</th>
+                <th>Статус оплаты</th>
+                <th>Получатель</th>
+                <th>Контакт</th>
+                <th>Дата приёма заказа</th>
+                <th>Статус</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for delivery in deliveries %}
+            <tr>
+                <td>{{ delivery.order.order_number }}</td>
+                <td>{{ delivery.payment_status }}</td>
+                <td>{{ delivery.recipient_name }}</td>
+                <td>{{ delivery.recipient_contact }}</td>
+                <td>{{ delivery.acceptance_date }}</td>
+                <td>
+                    {% if delivery.issued %}
+                    <span class="badge bg-success">Выдан</span>
+                    {% else %}
+                    <span class="badge bg-warning">Ожидает выдачи</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not delivery.issued %}
+                    <a href="{% url 'issue_order' delivery.order.id %}" class="btn btn-primary btn-sm">Выдать заказ</a>
+                    {% else %}
+                    <span class="text-muted">Заказ выдан</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7">Выданных заказов пока нет.</td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div>
+{% endblock %}
