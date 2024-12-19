@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="regds">
-    <h1>Регистрация</h1>
+    <h1>Регистрация нового сотрудника</h1>
     <form method="post">
         {% csrf_token %}
         <div class="mb-3">
@@ -19,9 +19,7 @@
             <label for="id_password2" class="form-label">Подтверждение пароля</label>
             <input type="password" id="id_password2" name="password2" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        <button type="submit" class="btn btn-primary">Зарегистрировать</button>
     </form>
-
-    <p>У вас есть аккаунта, <a href="{% url 'login' %}">войти</a>.</p>
 </div>
 {% endblock %}

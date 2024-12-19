@@ -51,12 +51,15 @@
                 </li>
                 {% if user.is_authenticated and user.is_staff %}
                 <li>
-                    <a href="/admin" target="_blank">
+                    <a href="/admin">
                         <img src="{% static 'main/img/admin.png' %}" alt="Админ" class="menu-icon">
+                    </a>
+
+                    <a href="/register">
+                        <img src="{% static 'main/img/polzovatel.png' %}" alt="Пользователь" class="menu-icon">
                     </a>
                 </li>
                 {% endif %}
-
                 </li>
             </ul>
         </aside>
